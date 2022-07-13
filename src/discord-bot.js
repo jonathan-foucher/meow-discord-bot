@@ -1,5 +1,7 @@
-const {Client, Intents} = require('discord.js');
+const {Client, Intents, MessageAttachment} = require('discord.js');
 const logger = require('./common/logger');
+
+const {getKittyPictureUrl} = require('./cat-api');
 
 const botToken = process.env.DISCORD_BOT_TOKEN;
 
@@ -20,7 +22,13 @@ client.on('interactionCreate', async (interaction) => {
 
         if (interaction.commandName === 'meow') {
             interaction.reply({content: 'Meow ! :3'});
+
+        } else if (interaction.commandName === 'get-kitty') {
+            getKittyPictureUrl().then(kittyPictureUrl => {
+                interaction.reply({content: 'Here is your kitty cat picture ! :3', files: [kittyPictureUrl]})
+            });
         }
+
     } catch (error) {
         manageUnexpectedError(error, interaction);
     }

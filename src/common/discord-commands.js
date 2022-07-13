@@ -11,6 +11,11 @@ const commands = [
         name: 'meow',
         description: 'Meow ?',
     },
+    {
+        type: 1,
+        name: 'get-kitty',
+        description: 'Get a kitty cat picture !',
+    },
 ];
 
 const rest = new REST({version: '9'}).setToken(botToken);
