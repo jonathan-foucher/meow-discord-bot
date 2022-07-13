@@ -1,5 +1,5 @@
 const { Client, Intents } = require('discord.js');
-const logger = require('../common/logger');
+const logger = require('./common/logger');
 
 const botToken = process.env.DISCORD_BOT_TOKEN;
 
